@@ -12,15 +12,15 @@ class _HomePageState extends State<HomePage> {
 // The underscore declares a variable as private in dart.
     Icons.add,
     Icons.search,
-    Icons.close,
-    Icons.star,
+    Icons.attach_money,
+    Icons.more
   ];
   List<String> _iconText = [
 // The underscore declares a variable as private in dart.
     'Add',
     'Search',
-    'Home',
-    'All',
+    'Topup',
+    'More',
   ];
   Widget _buildIcon(int index) {
     return Container(
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Icon(
                 _icons[index],
-                size: 35.0,
+                size: 25.0,
                 color: Colors.white,
               )),
           SizedBox(
@@ -55,8 +55,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.arrow_back),
+      ),
       body: SingleChildScrollView(
           child: Container(
+        padding: EdgeInsets.only(top: 50),
         decoration: BoxDecoration(
           gradient:
               LinearGradient(colors: [Color(0xFF36d7f3), Color(0xFF4fa8ee)]),
@@ -75,7 +80,8 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           children: [
                             CircleAvatar(
-                              backgroundImage: NetworkImage(''),
+                              backgroundImage:
+                                  NetworkImage('https://i.pravatar.cc/300'),
                             ),
                             SizedBox(
                               width: 10,
@@ -90,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300),
                                 ),
-                                Text('Nilesh Shiragave',
+                                Text('John Hasting',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
@@ -174,12 +180,15 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            AllExpenses('D Mart', '', 25, 'cash', '10 July'),
-                            AllExpenses('D Mart', '', 25, 'cash', '10 July'),
-                            AllExpenses('D Mart', '', 25, 'cash', '10 July'),
-                            AllExpenses('D Mart', '', 25, 'cash', '10 July'),
-                            AllExpenses('D Mart', '', 25, 'cash', '10 July'),
-                            AllExpenses('D Mart', '', 25, 'cash', '10 July'),
+                            AllExpenses('Shopping', '', 25, 'cash', '11 July'),
+                            AllExpenses(
+                                'Broadband Bill', '', 100, 'Online', '08 July'),
+                            AllExpenses(
+                                'Water Bill', '', 35, 'Cheque', '05 July'),
+                            AllExpenses('Hotel', '', 80, 'cash', '02 July'),
+                            AllExpenses('Grossery', '', 90, 'cash', '01 July'),
+                            AllExpenses(
+                                'Medicines', '', 60, 'Online', '30 June'),
                           ],
                         );
                       }),
@@ -208,8 +217,13 @@ class AllExpenses extends StatelessWidget {
       children: [
         ListTile(
           leading: CircleAvatar(),
-          title: Text(shoptitle),
+          title: Text(
+            shoptitle,
+            style: TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
           subtitle: Text(date),
+          contentPadding: EdgeInsets.all(0),
           trailing: Column(
             children: [
               Text(
